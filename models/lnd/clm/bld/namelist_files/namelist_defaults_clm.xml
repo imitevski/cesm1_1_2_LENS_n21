@@ -14,6 +14,9 @@ are: hgrid, defaults, mask, ic_ymd, ic_tod, sim_year and all configuration
 attributes from the config_cache.xml file (with keys converted to upper-case).
 -->
 
+<!-- Use double precision for output -->
+<hist_ndens>1</hist_ndens>
+
 <!-- Default time step -->
 <dtime>1800</dtime>
 

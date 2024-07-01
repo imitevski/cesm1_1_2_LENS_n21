@@ -538,4 +538,24 @@
         <PES_PER_NODE>16</PES_PER_NODE>
 </machine>
 
+<machine MACH="derecho">
+  <DESC>NCAR AMD EPYC test system 16 CPU nodes 2 GPU nodes</DESC>
+  <OS>CNL</OS>
+  <COMPILERS>intel,gnu,cray,nvhpc,intel-oneapi,intel-classic</COMPILERS>
+  <MPILIBS>mpich</MPILIBS>
+  <RUNDIR>/glade/derecho/scratch/$CCSMUSER/$CASE/run</RUNDIR>
+  <EXEROOT>/glade/derecho/scratch/$CCSMUSER/$CASE/bld</EXEROOT>
+  <DIN_LOC_ROOT>/glade/campaign/cesm/cesmdata/inputdata</DIN_LOC_ROOT>
+  <DIN_LOC_ROOT_CLMFORC>/glade/campaign/cesm/cesmdata/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+  <DOUT_S_ROOT>/glade/derecho/scratch/$CCSMUSER/archive/$CASE</DOUT_S_ROOT>
+  <CCSM_BASELINE>/glade/campaign/cesm/cesmdata/ccsm_baselines</CCSM_BASELINE>
+  <CCSM_CPRNC>/glade/campaign/cesm/cesmdata/cprnc/cprnc</CCSM_CPRNC>
+  <BATCHQUERY>qstat -f</BATCHQUERY>
+  <BATCHSUBMIT>qsub</BATCHSUBMIT>
+  <SUPPORTED_BY>cseg</SUPPORTED_BY>
+  <GMAKE_J>16</GMAKE_J>
+  <MAX_TASKS_PER_NODE>128</MAX_TASKS_PER_NODE>
+  <PES_PER_NODE>128</PES_PER_NODE>
+</machine>
+
 </config_machines>

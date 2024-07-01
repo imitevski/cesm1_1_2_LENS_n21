@@ -195,8 +195,8 @@ static int update_ll_hash (Timer *, const int, const unsigned int);
 static inline int update_ptr (Timer *, const int);
 static int construct_tree (Timer *, Method);
 
-static int cmp (const char **, const char **);
-static int ncmp (const char **, const char **);
+static int cmp (const void *, const void *);
+static int ncmp (const void *, const void *);
 static int get_index ( const char *, const char *);
 
 typedef struct {
@@ -2933,8 +2933,11 @@ int get_index( const char * list,
 ** cmp: returns value from strcmp. for use with qsort
 */
 
-static int cmp(const char **x, const char **y)
+/*static int cmp(const char **x, const char **y)*/
+static int cmp(const void *pa, const void *pb)
 {
+  const char** x = (const char**)pa;
+  const char** y = (const char**)pb;
   return strcmp(*x, *y);
 }
 
@@ -2943,9 +2946,12 @@ static int cmp(const char **x, const char **y)
 ** ncmp: compares values of memory adresses pointed to by a pointer. for use with qsort
 */
 
-static int ncmp( const char **x, const char **y )
+/*static int ncmp( const char **x, const char **y )*/
+static int ncmp( const void *pa, const void *pb )
 {
   static const char *thisfunc = "GPTLsetoption";
+  const char** x = (const char**)pa;
+  const char** y = (const char**)pb;
 
   if( *x > *y )
     return 1;

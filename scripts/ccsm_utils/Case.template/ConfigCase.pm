@@ -1168,7 +1168,8 @@ sub set_machine
         # allow for environment variables in the config_machines.xml file 
         # using $ENV{variablename} syntax
 	my $text = $setting->get_text();
-	if($text =~/^(.*)\$ENV{(.*)}(.*)$/){
+	# if($text =~/^(.*)\$ENV{(.*)}(.*)$/){
+    if($text =~/^(.*)\$ENV\{(.*)\}(.*)$/){
 	    $text = $1.$ENV{$2}.$3;
 	}
 	$self->set($sname,$text);

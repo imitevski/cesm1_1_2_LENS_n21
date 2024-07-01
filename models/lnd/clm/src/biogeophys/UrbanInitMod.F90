@@ -420,8 +420,8 @@ contains
 #endif
        else
           t_building(l)     = spval
-          eflx_traffic(l)   = spval
-          eflx_wasteheat(l) = spval
+          eflx_traffic(l)   = 0._r8
+          eflx_wasteheat(l) = 0._r8
        end if
     end do
 
@@ -440,9 +440,9 @@ contains
              qcharge(c) = spval
           end if
        else
-          eflx_building_heat(c) = spval
-          eflx_urban_ac(c) = spval
-          eflx_urban_heat(c) = spval
+          eflx_building_heat(c) = 0._r8
+          eflx_urban_ac(c) = 0._r8
+          eflx_urban_heat(c) = 0._r8
           t_grnd_u(c) = spval
           qflx_runoff_u(c) = spval
           eflx_snomelt_u(c) = spval
@@ -456,9 +456,9 @@ contains
           t_ref2m_min_u(p) = spval
           t_ref2m_max_u(p) = spval
           rh_ref2m_u(p)     = spval
-          eflx_wasteheat_pft(p) = spval
-          eflx_heat_from_ac_pft(p) = spval
-          eflx_traffic_pft(p) = spval
+          eflx_wasteheat_pft(p) = 0._r8
+          eflx_heat_from_ac_pft(p) = 0._r8
+          eflx_traffic_pft(p) = 0._r8
           eflx_anthro(p)    = spval
           fsa_u(p)            = spval 
           eflx_lwrad_net_u(p) = spval
