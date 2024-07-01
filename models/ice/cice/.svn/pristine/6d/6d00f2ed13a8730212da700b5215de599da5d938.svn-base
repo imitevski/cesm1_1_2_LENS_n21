@@ -1,0 +1,30 @@
+!----------------------------------------------------------------------------------
+! Users should add all user specific namelist changes below in the form of 
+!   namelist_var = new_namelist_value 
+! Note - that it does not matter what namelist group the namelist_var belongs to
+!----------------------------------------------------------------------------------
+ 
+histfreq='m','d','x','x','x'
+histfreq_n=1,1,6,1,1
+f_aice='mdxxx'
+f_daidtt='mdxxx'
+f_daidtd='mdxxx'
+f_dvidtd='mdxxx'
+f_dvidtt='mdxxx'
+f_hs='mdxxx'
+f_hi='mdxxx'
+f_fswdn='mdxxx'
+f_fswabs='mdxxx'
+f_aicen='mxhxx'
+f_apondn='mxhxx'
+f_uvel='mxhxx'
+f_vvel='mxhxx'
+f_meltt='mxhxx'
+f_meltb='mxhxx'
+f_strinty='mxhxx'
+f_strintx='mxhxx'
+f_strairx='mxhxx'
+f_strairy='mxhxx'
+f_strocnx='mxhxx'
+f_strocny='mxhxx'
+f_fswthru='mxhxx'

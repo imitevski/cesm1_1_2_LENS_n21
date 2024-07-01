@@ -1,0 +1,168 @@
+================================================================================
+SVN $Id$
+SVN $URL$
+================================================================================
+
+Originator: kauff
+Date:  Thu Mar 22 2012
+Model: mapping/gen_runoff_ocn_maps
+Version: 
+One-line summary: exact copy of gen_runoffmap trunk
+
+================================================================================
+================================================================================
+Originator: kauff
+Date:  Thu Mar 22 2012
+Model: gen_runoffmap
+Version: gen_runoffmap_120322
+One-line summary: move ref1br branch code onto main trunk
+
+================================================================================
+================================================================================
+Originator: kauff
+Date:  Thu Mar 22 2012
+Model: gen_runoffmap
+Version: ref1br04_gen_runoffmap_080619
+One-line summary: modify size estimates for smoothing matrix & mat-mat multiply 
+
+map_mod.F90
+- bump up size estimate for result of matrix-matrix multiple
+- size is 20% greater, as required by some paleo application, circa 2011 (ask nanr)
+
+smooth.F90
+- set size estimate for smoothing matrix to max size that it can be 
+  given that it is indexed with a 4-byte integer (ie. close to 2 ^ 31 -1)
+- add diagnostics wrt the min, max, avg, bin'd number of cells that each src cell is smooth into
+
+================================================================================
+Originator: kauff
+Date: Wed Mar 18 14:29:34 MDT 2009
+Model: gen_runoffmap
+Version: ref1br03_gen_runoffmap_080619
+One-line summary: fix bug in nn algorithm
+
+Changes made:
+
+- add support for this runoff data on this domain...
+  /fis/cgd/cseg/csm/inputdata/lnd/dlnd7/RX1/runoff.daitren.annual.090225.nc
+  which is observational data an a regular 1x1 deg lat/lon grid
+- replace optimize nn map generation algorithm with a brute-force approach
+  because the optimized version doesn't work correctly.  May need to debug
+  and reintroduce the optimized version for use with tx0.1 grids
+- add support for bluefire, remove support for blueice
+
+================================================================================
+
+Originator: tcraig, jdennis
+Date: Fri Jun 27 14:58:02 MDT 2008
+Model: gen_runoffmap
+Version: ref1br01_gen_runoffmap_080619
+One-line summary: update code
+
+Changes made:
+
+- update smoothing algorithm from jdennis
+- generate nearest neighbor initial mapping on the fly
+- read in raw rdirc file instead of rdirc scrip grid file
+- refactor mat_mat_mult to take advantage of nearest
+  neighbor implementation -- input map MUST BE nearest neighbor
+- clean up some memory use issues
+
+================================================================================
+
+Originator: tcraig
+Date: 
+Model: gen_runoffmap
+Version: ref1br00_gen_runoffmap_080619
+One-line summary: create branch ?
+
+Changes made:
+
+================================================================================
+================================================================================
+
+Originator: kauff
+Date: Thu Jun 19 17:04:19 EDT 2008
+Model: gen_runoffmap
+Version: gen_runoffmap_080619
+One-line summary: remove dead code, add recur_setdist
+
+Changes made:
+
+- remove unused POP_* routines from smooth_mod.F90
+- add recur_setdist routine
+
+================================================================================
+Originator: kauff
+Date: Tue Jun 10 16:01:27 MDT 2008
+Model: gen_runoffmap
+Version: gen_runoffmap_080610
+One-line summary: performance enhancements motivated by r05_tx0.1v2 mapping
+
+Changes made:
+- memory & efficiency mods required by hi-rez (r05_tx0.1v2) mapping
+  (thanks to John Dennis)
+- is hard-coded to apply smoothing only to points that are implicated in the
+  destination domain of the original (unsmoothed) map (which is reasonable
+  and also a lot less work).  "Implicated" means mapped to -- there may be
+  many unmasked destination grid cells that are not "implicated."
+  Implicated points are presumably only very near to coasts.
+- used to create: map_r05_to_tx0.1v2_e1000r50_080605.nc, which apparently works OK (?)
+- NOTE: has been validated as b4b with previous tag 
+  (by recreating map_r05_to_tx1v1_e1000r500_080505.nc)
+  WITH THE SRC MOD of *not* restricting smoothing to implicated ocn cells
+  (smooths all unmasked ocn cells)
+
+Timing info:
+   o input : file_orig = 'map_r05_to_tx1v1.nc '
+   o output: file_new  = 'map_r05_to_tx1v1_e1000r500_yymmdd.nc
+   o very hi-rez tx0.1v2 ocn grid
+   o restricted sources (only smooth implicted ocn cells)
+   o only a 50km smoothing radius
+   o basically: step2 = 4 hours, step3 = 4.75 hours
+   o on one blueice node using 16 threads (sorting & mat-mult are threaded)
+
+================================================================================
+
+Originator: kauff
+Date: Wed May 28 10:57:36 MDT 2008
+Model: gen_runoffmap
+Version: gen_runoffmap_080528
+One-line summary: tag code cleanup circa Jan 2007
+
+Changes made:
+- code cleanup circa Jan 2007
+- new eFold & rMax nml vars
+- time stamp progress reports when making smoothing map (May 2008)
+- validated against gen_runoffmap_070104 by recreating 
+  map_r05_to_tx1v1_e1000r500_080505.nc (there are roundoff differences)
+
+================================================================================
+Originator: kauff
+Date: Thu Jan  4 11:52:13 MST 2007
+Model: gen_runoffmap
+Version: gen_runoffmap_070104
+One-line summary: new correction & sorting algorithms: faster, more accurate
+
+Changes made:
+- this code worked on 2007 Jan 2 for S. Yeager for making 
+  map_r05_to_gx1v5_e1000r500_070102.nc
+- all steps/phases: < 6 hrs on bluesky, threaded on 24 processors
+- new correction algorithm more accurately smooths runoff data
+- new sort algorithm is much faster 
+- also works on bluevista, but only 8 processors are available on a node
+  which is slower than 24 processors on bluesky
+
+================================================================================
+
+Originator: kauff
+Date: Tue Dec 19 15:50:32 MST 2006
+Model: gen_runoffmap
+Version: gen_runoffmap_061219
+One-line summary:  initial import of gen_runoffmap code
+
+Changes made:
+- this code apparently worked in Sep 2006 for B. Briegleb for making 
+  the kx3v1 paleo grid runoff map.
+
+================================================================================

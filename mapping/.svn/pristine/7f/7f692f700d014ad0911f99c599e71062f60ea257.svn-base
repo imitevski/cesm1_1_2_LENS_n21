@@ -1,0 +1,20 @@
+==========================================================================
+$Id$
+$URL$
+==========================================================================
+
+========
+BUILDING
+========
+
+To compile this tool, you must be on bluefire. You also must set the
+environment variable ESMFMKFILE=/contrib/esmf-5.2.0r-64-O/lib/esmf.mk (note that
+after the -64 in the above path, it is a dash followed by the letter O rather
+than the number 0). With this variable set, enter the mapping/check_maps/src/
+directory and run
+
+$ gmake
+
+back in the mapping/check_maps/ directory, you should now have an executable
+file named ESMF_RegridWeightGenCheck
+
