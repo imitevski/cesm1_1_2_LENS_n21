@@ -13,6 +13,7 @@ To run on Derecho:
 * ./create_newcase -case "$CASEDIR" -mach derecho -compset B1850LENS -res f09_g16
 * cd "$CASEDIR"
 * ./cesm_setup
+* in env_mach_pes.xml change all NTHRDS_* values to 1
 * ./xmlchange RUN_TYPE=hybrid,RUN_REFCASE=b.e11.B1850C5CN.f09_g16.005,RUN_REFDATE=0402-01-01,GET_REFCASE=FALSE
 * ./${CASENAME}.build
 * cp -r /glade/work/im2527/0402-01-01-00000/* /YOUR_RUN_DIRECTORY/
